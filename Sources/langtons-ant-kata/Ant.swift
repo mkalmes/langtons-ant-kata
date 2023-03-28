@@ -19,6 +19,15 @@ struct Ant {
     }
 
     mutating func turnRight() {
-        heading = .east
+        switch heading {
+        case .north:
+            heading = .east
+        case .west:
+            heading = .north
+        case .south:
+            heading = .west
+        case .east:
+            heading = .south
+        }
     }
 }
