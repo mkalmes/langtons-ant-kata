@@ -1,8 +1,21 @@
 struct Ant {
-    var heading: CardinalDirection = .north
+    var heading: CardinalDirection
+
+    init(_ heading: CardinalDirection = .north) {
+        self.heading = heading
+    }
 
     mutating func turnLeft() {
-        heading = .west
+        switch heading {
+        case .north:
+            heading = .west
+        case .west:
+            heading = .south
+        case .south:
+            heading = .east
+        case .east:
+            heading = .north
+        }
     }
 
     mutating func turnRight() {

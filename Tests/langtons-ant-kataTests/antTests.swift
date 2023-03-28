@@ -9,12 +9,22 @@ final class antTests: XCTestCase {
         XCTAssertEqual(ant.heading, .north)
     }
 
-    func testAntWhenHeadingNorthAndTurningLeftIsHeadingWest() throws {
-        var ant = Ant()
+    func testAntTurningLeftIsHeadingInTheRightDirection() throws {
+        let testCases = [
+            (direction: CardinalDirection.north, newDirection: CardinalDirection.west),
+            (direction: CardinalDirection.east, newDirection: CardinalDirection.north),
+            (direction: CardinalDirection.south, newDirection: CardinalDirection.east),
+            (direction: CardinalDirection.west, newDirection: CardinalDirection.south)
+        ]
+        for (direction, newDirection) in testCases {
+            XCTContext.runActivity(named: "Expect ant heading \(direction) and turning left to head to \(newDirection)") { activity in
+                var ant = Ant(direction)
 
-        ant.turnLeft()
+                ant.turnLeft()
 
-        XCTAssertEqual(ant.heading, .west)
+                XCTAssertEqual(ant.heading, newDirection)
+            }
+        }
     }
 
     func testAntWhenHeadingNorthAndTurningRigthIsHeadingEast() throws {
