@@ -4,4 +4,8 @@ struct Ant {
     mutating func turnLeft() {
         heading = .west
     }
+
+    mutating func turnRight() {
+        heading = .east
+    }
 }

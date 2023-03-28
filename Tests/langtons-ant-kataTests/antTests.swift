@@ -17,4 +17,12 @@ final class antTests: XCTestCase {
         XCTAssertEqual(ant.heading, .west)
     }
 
+    func testAntWhenHeadingNorthAndTurningRigthIsHeadingEast() throws {
+        var ant = Ant()
+
+        ant.turnRight()
+
+        XCTAssertEqual(ant.heading, .east)
+    }
+
 }
